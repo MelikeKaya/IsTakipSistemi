@@ -1,0 +1,151 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="istakipsistemi.konumbazlitakip.Anasayfa"
+    android:background="#ffffff"
+    >
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/ImgProfil"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtWelcome"
+        android:layout_centerHorizontal="true"
+        android:textSize="12dp"
+        android:textColor="#054658"
+        android:text="Hoşgeldiniz, Melike Kaya"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ImgProfil"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="17dp"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtEnlemBoylam"
+        android:textSize="12dp"
+        android:textColor="#054658"
+        android:text="Koordinatlar: 34,6771562 / 36,6727222"
+        android:layout_below="@+id/TxtWelcome"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtKonum"
+        android:textSize="12dp"
+        android:textColor="#054658"
+        android:text="Konumunuz: 100.Yıl Mahallesi, Karabük Üniversitesi"
+        android:layout_below="@+id/TxtEnlemBoylam"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtAdSoyad"
+        android:textSize="12dp"
+        android:textColor="#054658"
+        android:text="Ad Soyad: Melike Kaya"
+        android:layout_below="@+id/TxtKonum"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtUnvan"
+        android:textSize="12dp"
+        android:textColor="#054658"
+        android:text="Unvan: Yazılım Geliştirme Uzmanı"
+        android:layout_below="@+id/TxtAdSoyad"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtDepartman"
+        android:textSize="12dp"
+        android:textColor="#054658"
+        android:text="Departman: Bilgi İşlem Departmanı"
+        android:layout_below="@+id/TxtUnvan"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtTelefon"
+        android:textSize="12dp"
+        android:textColor="#054658"
+        android:text="Telefon: 0505 741 52 36"
+        android:layout_below="@+id/TxtDepartman"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        />
+
+    <Spinner
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/TxtTelefon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#ffe6fdff"
+        android:textColor="#ff143777"
+        android:id="@+id/CmbFirmalar"
+        android:textSize="12dp"
+        >
+    </Spinner>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CmbFirmalar"
+        android:layout_alignParentLeft="true"
+        android:text="Ziyareti Başlat"
+        android:id="@+id/BtnMesaiGiris"
+        android:layout_marginTop="40dp"
+        android:background="#0DADD8"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="13dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TxtBottomInfo"
+        android:layout_centerHorizontal="true"
+        android:textSize="12dp"
+        android:textColor="#054658"
+        android:text="İş Takip Sistemi | 2018 --- Personel Ziyaret Kayıt Yazılımı"
+        android:layout_alignParentBottom="true"
+        />
+
+
+
+</RelativeLayout>

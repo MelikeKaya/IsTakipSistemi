@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsTakipSistemiWeb", "IsTakipSistemiWeb\IsTakipSistemiWeb.csproj", "{DC48DD4C-C4CA-4E52-B0A5-076DF16FBFCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC48DD4C-C4CA-4E52-B0A5-076DF16FBFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC48DD4C-C4CA-4E52-B0A5-076DF16FBFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC48DD4C-C4CA-4E52-B0A5-076DF16FBFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC48DD4C-C4CA-4E52-B0A5-076DF16FBFCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0A116CC-B940-42AC-BF52-0623E83AF695}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://bakiemregulerprojects.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = IsTakipSistemiWeb\\IsTakipSistemiWeb.csproj
+		SccProjectName1 = IsTakipSistemiWeb
+		SccLocalPath1 = IsTakipSistemiWeb
+	EndGlobalSection
+EndGlobal

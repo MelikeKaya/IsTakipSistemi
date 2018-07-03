@@ -1,0 +1,834 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbIsTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bildirim">
+    <Key>
+      <PropertyRef Name="bildirim_id" />
+    </Key>
+    <Property Name="bildirim_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tur_id" Type="int" />
+    <Property Name="personel_tc" Type="nvarchar" MaxLength="11" />
+    <Property Name="session_personel_tc" Type="nvarchar" MaxLength="11" />
+    <Property Name="mesaj" Type="nvarchar(max)" />
+    <Property Name="tarih" Type="datetime" />
+    <Property Name="goruldu_mu" Type="bit" />
+  </EntityType>
+  <EntityType Name="BildirimTur">
+    <Key>
+      <PropertyRef Name="tur_id" />
+    </Key>
+    <Property Name="tur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="200" />
+    <Property Name="arkaplan" Type="nvarchar" MaxLength="120" />
+    <Property Name="ikon_font" Type="nvarchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="Dosya">
+    <Key>
+      <PropertyRef Name="dosya_id" />
+    </Key>
+    <Property Name="dosya_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategori_id" Type="int" />
+    <Property Name="yukleyen_personel_tc" Type="nvarchar" MaxLength="11" />
+    <Property Name="iliskili_firma_id" Type="int" />
+    <Property Name="baslik" Type="nvarchar" MaxLength="150" />
+    <Property Name="yol" Type="nvarchar(max)" />
+    <Property Name="tarih" Type="date" />
+    <Property Name="uzanti" Type="nvarchar" MaxLength="50" />
+    <Property Name="silindi_mi" Type="bit" />
+  </EntityType>
+  <EntityType Name="DosyaKategori">
+    <Key>
+      <PropertyRef Name="kategori_id" />
+    </Key>
+    <Property Name="kategori_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ekleyen_personel_tc" Type="nvarchar" MaxLength="11" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="eklenme_tarih" Type="date" />
+    <Property Name="silindi_mi" Type="bit" />
+  </EntityType>
+  <EntityType Name="Firma">
+    <Key>
+      <PropertyRef Name="firma_id" />
+    </Key>
+    <Property Name="firma_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cari_kod" Type="nvarchar" MaxLength="50" />
+    <Property Name="durum_id" Type="int" />
+    <Property Name="sgk_no" Type="nvarchar" MaxLength="200" />
+    <Property Name="vergi_daire" Type="nvarchar" MaxLength="200" />
+    <Property Name="vergi_no" Type="nvarchar" MaxLength="200" />
+    <Property Name="unvan" Type="nvarchar" MaxLength="200" />
+    <Property Name="kisa_ad" Type="nvarchar" MaxLength="200" />
+    <Property Name="telefon" Type="nvarchar" MaxLength="200" />
+    <Property Name="mail" Type="nvarchar" MaxLength="200" />
+    <Property Name="adres" Type="nvarchar(max)" />
+    <Property Name="enlem" Type="float" />
+    <Property Name="boylam" Type="float" />
+    <Property Name="silindi_mi" Type="bit" />
+  </EntityType>
+  <EntityType Name="FirmaDurum">
+    <Key>
+      <PropertyRef Name="durum_id" />
+    </Key>
+    <Property Name="durum_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="arkaplan_rengi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FirmaYetkili">
+    <Key>
+      <PropertyRef Name="yetkili_id" />
+    </Key>
+    <Property Name="yetkili_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firma_id" Type="int" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="telefon" Type="nvarchar" MaxLength="50" />
+    <Property Name="mail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Gelir">
+    <Key>
+      <PropertyRef Name="kayit_id" />
+    </Key>
+    <Property Name="kayit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategori_id" Type="int" />
+    <Property Name="tarih" Type="date" />
+    <Property Name="miktar" Type="float" />
+    <Property Name="aciklama" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="GelirKategori">
+    <Key>
+      <PropertyRef Name="kategori_id" />
+    </Key>
+    <Property Name="kategori_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Gider">
+    <Key>
+      <PropertyRef Name="kayit_id" />
+    </Key>
+    <Property Name="kayit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategori_id" Type="int" />
+    <Property Name="tarih" Type="date" />
+    <Property Name="miktar" Type="float" />
+    <Property Name="aciklama" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="GiderKategori">
+    <Key>
+      <PropertyRef Name="kategori_id" />
+    </Key>
+    <Property Name="kategori_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Hak">
+    <Key>
+      <PropertyRef Name="hak_id" />
+    </Key>
+    <Property Name="hak_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="150" />
+    <Property Name="link_id" Type="nvarchar" MaxLength="50" />
+    <Property Name="ust_link_id" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Hata">
+    <Key>
+      <PropertyRef Name="hata_id" />
+    </Key>
+    <Property Name="hata_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sinif" Type="nvarchar" MaxLength="150" />
+    <Property Name="aciklama" Type="nvarchar" MaxLength="250" />
+    <Property Name="tarih" Type="datetime" />
+    <Property Name="mesaj" Type="nvarchar(max)" />
+    <Property Name="strace" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Is">
+    <Key>
+      <PropertyRef Name="is_id" />
+    </Key>
+    <Property Name="is_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tur_id" Type="int" />
+    <Property Name="firma_id" Type="int" />
+    <Property Name="durum_id" Type="int" />
+    <Property Name="baslik" Type="nvarchar" MaxLength="200" />
+    <Property Name="kayit_tarih" Type="date" />
+    <Property Name="sure" Type="int" />
+    <Property Name="ucret" Type="float" />
+    <Property Name="alinan_ucret" Type="float" />
+    <Property Name="aylik_ucret" Type="float" />
+    <Property Name="yillik_ucret" Type="float" />
+    <Property Name="sozlesme" Type="nvarchar" MaxLength="200" />
+    <Property Name="aciklama" Type="nvarchar(max)" />
+    <Property Name="silindi_mi" Type="bit" />
+    <Property Name="sorumlu_personel" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="IsDurum">
+    <Key>
+      <PropertyRef Name="durum_id" />
+    </Key>
+    <Property Name="durum_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="IsPersonelOrtak">
+    <Key>
+      <PropertyRef Name="kayit_id" />
+    </Key>
+    <Property Name="kayit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="is_id" Type="int" />
+    <Property Name="personel_tc" Type="nvarchar" MaxLength="11" />
+    <Property Name="gorev_baslama_tarih" Type="date" />
+    <Property Name="gorev_sonlanma_tarih" Type="date" />
+    <Property Name="aciklama" Type="nvarchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="IsTur">
+    <Key>
+      <PropertyRef Name="tur_id" />
+    </Key>
+    <Property Name="tur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="log_id" />
+    </Key>
+    <Property Name="log_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tur_id" Type="int" />
+    <Property Name="personel_tc" Type="nvarchar" MaxLength="11" />
+    <Property Name="ip_adres" Type="nvarchar" MaxLength="250" />
+    <Property Name="bilgisayar_ad" Type="nvarchar" MaxLength="250" />
+    <Property Name="aktif_sayfa" Type="nvarchar" MaxLength="250" />
+    <Property Name="tarih" Type="datetime" />
+    <Property Name="mesaj" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LogTur">
+    <Key>
+      <PropertyRef Name="tur_id" />
+    </Key>
+    <Property Name="tur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="MailAyar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mail" Type="nvarchar" MaxLength="250" />
+    <Property Name="sifre" Type="nvarchar" MaxLength="250" />
+    <Property Name="host" Type="nvarchar" MaxLength="250" />
+    <Property Name="port" Type="int" />
+    <Property Name="ssl" Type="bit" />
+  </EntityType>
+  <EntityType Name="MesaiKayit">
+    <Key>
+      <PropertyRef Name="kayit_id" />
+    </Key>
+    <Property Name="kayit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personel_tc" Type="nvarchar" MaxLength="11" />
+    <Property Name="tarih" Type="date" />
+    <Property Name="giris_saat" Type="time" Precision="7" />
+    <Property Name="cikis_saat" Type="time" Precision="7" />
+    <Property Name="giris_enlem" Type="float" />
+    <Property Name="giris_boylam" Type="float" />
+    <Property Name="cikis_enlem" Type="float" />
+    <Property Name="cikis_boylam" Type="float" />
+    <Property Name="giris_fark" Type="float" />
+    <Property Name="cikis_fark" Type="float" />
+    <Property Name="ek_mesai" Type="float" />
+  </EntityType>
+  <EntityType Name="Personel">
+    <Key>
+      <PropertyRef Name="personel_tc" />
+    </Key>
+    <Property Name="personel_tc" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="departman_id" Type="int" />
+    <Property Name="tip_id" Type="int" />
+    <Property Name="kullanici_rol_id" Type="int" />
+    <Property Name="sicil_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="ad" Type="nvarchar" MaxLength="80" />
+    <Property Name="soyad" Type="nvarchar" MaxLength="80" />
+    <Property Name="cinsiyet" Type="nvarchar" MaxLength="50" />
+    <Property Name="dogum_tarih" Type="date" />
+    <Property Name="fotograf" Type="nvarchar" MaxLength="80" />
+    <Property Name="mail" Type="nvarchar" MaxLength="80" />
+    <Property Name="telefon" Type="nvarchar" MaxLength="80" />
+    <Property Name="adres" Type="nvarchar" MaxLength="120" />
+    <Property Name="unvan" Type="nvarchar" MaxLength="80" />
+    <Property Name="ise_giris_tarih" Type="date" />
+    <Property Name="isten_cikis_tarih" Type="date" />
+    <Property Name="guncel_maas" Type="float" />
+    <Property Name="ek_mesai_ucret" Type="float" />
+    <Property Name="varsayilan_giris_saat" Type="time" Precision="7" />
+    <Property Name="varsayilan_cikis_saat" Type="time" Precision="7" />
+    <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="silindi_mi" Type="bit" />
+  </EntityType>
+  <EntityType Name="PersonelDepartman">
+    <Key>
+      <PropertyRef Name="departman_id" />
+    </Key>
+    <Property Name="departman_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="100" />
+    <Property Name="sorumlu_personel_tc" Type="nvarchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="PersonelMaas">
+    <Key>
+      <PropertyRef Name="maas_id" />
+    </Key>
+    <Property Name="maas_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personel_tc" Type="nvarchar" MaxLength="11" />
+    <Property Name="maas_miktar" Type="float" />
+    <Property Name="baslangic_tarih" Type="date" />
+    <Property Name="bitis_tarih" Type="date" />
+  </EntityType>
+  <EntityType Name="PersonelTip">
+    <Key>
+      <PropertyRef Name="tip_id" />
+    </Key>
+    <Property Name="tip_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="100" />
+    <Property Name="varsayilan_maas" Type="float" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="rol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RolHak">
+    <Key>
+      <PropertyRef Name="rolhak_id" />
+    </Key>
+    <Property Name="rolhak_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rol_id" Type="int" />
+    <Property Name="hak_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Sikayet">
+    <Key>
+      <PropertyRef Name="kayit_id" />
+    </Key>
+    <Property Name="kayit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="is_id" Type="int" />
+    <Property Name="fotograf" Type="nvarchar" MaxLength="50" />
+    <Property Name="baslik" Type="nvarchar" MaxLength="50" />
+    <Property Name="aciklama" Type="nvarchar" MaxLength="50" />
+    <Property Name="tarih" Type="date" />
+    <Property Name="cozuldu_mu" Type="int" />
+  </EntityType>
+  <EntityType Name="SirketProfilBilgileri">
+    <Key>
+      <PropertyRef Name="profilId" />
+    </Key>
+    <Property Name="profilId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="unvan" Type="nvarchar" MaxLength="300" />
+    <Property Name="telefon" Type="nvarchar" MaxLength="300" />
+    <Property Name="mail" Type="nvarchar" MaxLength="300" />
+    <Property Name="web" Type="nvarchar" MaxLength="300" />
+    <Property Name="adres" Type="nvarchar" MaxLength="300" />
+    <Property Name="faks" Type="nvarchar" MaxLength="300" />
+    <Property Name="enlem" Type="float" />
+    <Property Name="boylam" Type="float" />
+  </EntityType>
+  <EntityType Name="Ziyaret">
+    <Key>
+      <PropertyRef Name="ziyaret_id" />
+    </Key>
+    <Property Name="ziyaret_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tur_id" Type="int" />
+    <Property Name="firma_id" Type="int" />
+    <Property Name="personel_tc" Type="nvarchar" MaxLength="11" />
+    <Property Name="aciklama" Type="nvarchar(max)" />
+    <Property Name="enlem" Type="float" />
+    <Property Name="boylam" Type="float" />
+    <Property Name="konum" Type="nvarchar" MaxLength="120" />
+    <Property Name="saat" Type="time" Precision="7" />
+    <Property Name="giris_tarih" Type="datetime" />
+    <Property Name="cikis_tarih" Type="datetime" />
+    <Property Name="giris_fark" Type="float" />
+    <Property Name="cikis_fark" Type="float" />
+    <Property Name="bildirim_goruldu_mu" Type="bit" />
+  </EntityType>
+  <EntityType Name="ZiyaretTur">
+    <Key>
+      <PropertyRef Name="tur_id" />
+    </Key>
+    <Property Name="tur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Bildirim_BildirimTur">
+    <End Role="BildirimTur" Type="Self.BildirimTur" Multiplicity="0..1" />
+    <End Role="Bildirim" Type="Self.Bildirim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BildirimTur">
+        <PropertyRef Name="tur_id" />
+      </Principal>
+      <Dependent Role="Bildirim">
+        <PropertyRef Name="tur_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bildirim_Personel">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="Bildirim" Type="Self.Bildirim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personel_tc" />
+      </Principal>
+      <Dependent Role="Bildirim">
+        <PropertyRef Name="personel_tc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bildirim_Personel1">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="Bildirim" Type="Self.Bildirim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personel_tc" />
+      </Principal>
+      <Dependent Role="Bildirim">
+        <PropertyRef Name="session_personel_tc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOSYA_KATEGORILERI_PERSONELLER">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="DosyaKategori" Type="Self.DosyaKategori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personel_tc" />
+      </Principal>
+      <Dependent Role="DosyaKategori">
+        <PropertyRef Name="ekleyen_personel_tc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOSYALAR_DOSYA_KATEGORILERI">
+    <End Role="DosyaKategori" Type="Self.DosyaKategori" Multiplicity="0..1" />
+    <End Role="Dosya" Type="Self.Dosya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DosyaKategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="Dosya">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOSYALAR_PERSONELLER">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="Dosya" Type="Self.Dosya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personel_tc" />
+      </Principal>
+      <Dependent Role="Dosya">
+        <PropertyRef Name="yukleyen_personel_tc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FIRMA_YETKILILERI_FIRMALAR">
+    <End Role="Firma" Type="Self.Firma" Multiplicity="0..1" />
+    <End Role="FirmaYetkili" Type="Self.FirmaYetkili" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firma">
+        <PropertyRef Name="firma_id" />
+      </Principal>
+      <Dependent Role="FirmaYetkili">
+        <PropertyRef Name="firma_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FIRMALAR_FIRMA_DURUMLARI">
+    <End Role="FirmaDurum" Type="Self.FirmaDurum" Multiplicity="0..1" />
+    <End Role="Firma" Type="Self.Firma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FirmaDurum">
+        <PropertyRef Name="durum_id" />
+      </Principal>
+      <Dependent Role="Firma">
+        <PropertyRef Name="durum_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GELIR_KAYITLARI_GELIR_KATEGORILERI">
+    <End Role="GelirKategori" Type="Self.GelirKategori" Multiplicity="0..1" />
+    <End Role="Gelir" Type="Self.Gelir" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GelirKategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="Gelir">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIDER_KAYITLARI_GIDER_KATEGORILERI">
+    <End Role="GiderKategori" Type="Self.GiderKategori" Multiplicity="0..1" />
+    <End Role="Gider" Type="Self.Gider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiderKategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="Gider">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IS_PERSONEL_ORTAK_ISLER">
+    <End Role="Is" Type="Self.Is" Multiplicity="0..1" />
+    <End Role="IsPersonelOrtak" Type="Self.IsPersonelOrtak" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Is">
+        <PropertyRef Name="is_id" />
+      </Principal>
+      <Dependent Role="IsPersonelOrtak">
+        <PropertyRef Name="is_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IS_PERSONEL_ORTAK_PERSONELLER">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="IsPersonelOrtak" Type="Self.IsPersonelOrtak" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personel_tc" />
+      </Principal>
+      <Dependent Role="IsPersonelOrtak">
+        <PropertyRef Name="personel_tc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISLER_FIRMALAR">
+    <End Role="Firma" Type="Self.Firma" Multiplicity="0..1" />
+    <End Role="Is" Type="Self.Is" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firma">
+        <PropertyRef Name="firma_id" />
+      </Principal>
+      <Dependent Role="Is">
+        <PropertyRef Name="firma_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISLER_IS_DURUMLARI">
+    <End Role="IsDurum" Type="Self.IsDurum" Multiplicity="0..1" />
+    <End Role="Is" Type="Self.Is" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IsDurum">
+        <PropertyRef Name="durum_id" />
+      </Principal>
+      <Dependent Role="Is">
+        <PropertyRef Name="durum_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISLER_IS_TURLERI">
+    <End Role="IsTur" Type="Self.IsTur" Multiplicity="0..1" />
+    <End Role="Is" Type="Self.Is" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IsTur">
+        <PropertyRef Name="tur_id" />
+      </Principal>
+      <Dependent Role="Is">
+        <PropertyRef Name="tur_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_LogTur">
+    <End Role="LogTur" Type="Self.LogTur" Multiplicity="0..1" />
+    <End Role="Log" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LogTur">
+        <PropertyRef Name="tur_id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="tur_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_Personel">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="Log" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personel_tc" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="personel_tc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MESAI_KAYITLARI_PERSONELLER">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="MesaiKayit" Type="Self.MesaiKayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personel_tc" />
+      </Principal>
+      <Dependent Role="MesaiKayit">
+        <PropertyRef Name="personel_tc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONEL_MAAS_KAYITLARI_PERSONELLER">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="PersonelMaas" Type="Self.PersonelMaas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personel_tc" />
+      </Principal>
+      <Dependent Role="PersonelMaas">
+        <PropertyRef Name="personel_tc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personel_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="rol_id" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="kullanici_rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONELLER_PERSONEL_DEPARTMANLARI">
+    <End Role="PersonelDepartman" Type="Self.PersonelDepartman" Multiplicity="0..1" />
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonelDepartman">
+        <PropertyRef Name="departman_id" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="departman_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONELLER_PERSONEL_TIPLERI">
+    <End Role="PersonelTip" Type="Self.PersonelTip" Multiplicity="0..1" />
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonelTip">
+        <PropertyRef Name="tip_id" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="tip_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolHak_Hak">
+    <End Role="Hak" Type="Self.Hak" Multiplicity="0..1" />
+    <End Role="RolHak" Type="Self.RolHak" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hak">
+        <PropertyRef Name="hak_id" />
+      </Principal>
+      <Dependent Role="RolHak">
+        <PropertyRef Name="hak_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolHak_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="RolHak" Type="Self.RolHak" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="rol_id" />
+      </Principal>
+      <Dependent Role="RolHak">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIKAYET_KAYITLARI_ISLER">
+    <End Role="Is" Type="Self.Is" Multiplicity="0..1" />
+    <End Role="Sikayet" Type="Self.Sikayet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Is">
+        <PropertyRef Name="is_id" />
+      </Principal>
+      <Dependent Role="Sikayet">
+        <PropertyRef Name="is_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZIYARETLER_FIRMALAR">
+    <End Role="Firma" Type="Self.Firma" Multiplicity="0..1" />
+    <End Role="Ziyaret" Type="Self.Ziyaret" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firma">
+        <PropertyRef Name="firma_id" />
+      </Principal>
+      <Dependent Role="Ziyaret">
+        <PropertyRef Name="firma_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZIYARETLER_PERSONELLER">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="Ziyaret" Type="Self.Ziyaret" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personel_tc" />
+      </Principal>
+      <Dependent Role="Ziyaret">
+        <PropertyRef Name="personel_tc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZIYARETLER_ZIYARET_TURLERI">
+    <End Role="ZiyaretTur" Type="Self.ZiyaretTur" Multiplicity="0..1" />
+    <End Role="Ziyaret" Type="Self.Ziyaret" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ZiyaretTur">
+        <PropertyRef Name="tur_id" />
+      </Principal>
+      <Dependent Role="Ziyaret">
+        <PropertyRef Name="tur_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbIsTakipModelStoreContainer">
+    <EntitySet Name="Bildirim" EntityType="Self.Bildirim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BildirimTur" EntityType="Self.BildirimTur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dosya" EntityType="Self.Dosya" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DosyaKategori" EntityType="Self.DosyaKategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Firma" EntityType="Self.Firma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FirmaDurum" EntityType="Self.FirmaDurum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FirmaYetkili" EntityType="Self.FirmaYetkili" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gelir" EntityType="Self.Gelir" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GelirKategori" EntityType="Self.GelirKategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gider" EntityType="Self.Gider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiderKategori" EntityType="Self.GiderKategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hak" EntityType="Self.Hak" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hata" EntityType="Self.Hata" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Is" EntityType="Self.Is" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IsDurum" EntityType="Self.IsDurum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IsPersonelOrtak" EntityType="Self.IsPersonelOrtak" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IsTur" EntityType="Self.IsTur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogTur" EntityType="Self.LogTur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MailAyar" EntityType="Self.MailAyar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MesaiKayit" EntityType="Self.MesaiKayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonelDepartman" EntityType="Self.PersonelDepartman" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonelMaas" EntityType="Self.PersonelMaas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonelTip" EntityType="Self.PersonelTip" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolHak" EntityType="Self.RolHak" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sikayet" EntityType="Self.Sikayet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SirketProfilBilgileri" EntityType="Self.SirketProfilBilgileri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ziyaret" EntityType="Self.Ziyaret" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZiyaretTur" EntityType="Self.ZiyaretTur" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Bildirim_BildirimTur" Association="Self.FK_Bildirim_BildirimTur">
+      <End Role="BildirimTur" EntitySet="BildirimTur" />
+      <End Role="Bildirim" EntitySet="Bildirim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bildirim_Personel" Association="Self.FK_Bildirim_Personel">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="Bildirim" EntitySet="Bildirim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bildirim_Personel1" Association="Self.FK_Bildirim_Personel1">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="Bildirim" EntitySet="Bildirim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOSYA_KATEGORILERI_PERSONELLER" Association="Self.FK_DOSYA_KATEGORILERI_PERSONELLER">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="DosyaKategori" EntitySet="DosyaKategori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOSYALAR_DOSYA_KATEGORILERI" Association="Self.FK_DOSYALAR_DOSYA_KATEGORILERI">
+      <End Role="DosyaKategori" EntitySet="DosyaKategori" />
+      <End Role="Dosya" EntitySet="Dosya" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOSYALAR_PERSONELLER" Association="Self.FK_DOSYALAR_PERSONELLER">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="Dosya" EntitySet="Dosya" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FIRMA_YETKILILERI_FIRMALAR" Association="Self.FK_FIRMA_YETKILILERI_FIRMALAR">
+      <End Role="Firma" EntitySet="Firma" />
+      <End Role="FirmaYetkili" EntitySet="FirmaYetkili" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FIRMALAR_FIRMA_DURUMLARI" Association="Self.FK_FIRMALAR_FIRMA_DURUMLARI">
+      <End Role="FirmaDurum" EntitySet="FirmaDurum" />
+      <End Role="Firma" EntitySet="Firma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GELIR_KAYITLARI_GELIR_KATEGORILERI" Association="Self.FK_GELIR_KAYITLARI_GELIR_KATEGORILERI">
+      <End Role="GelirKategori" EntitySet="GelirKategori" />
+      <End Role="Gelir" EntitySet="Gelir" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIDER_KAYITLARI_GIDER_KATEGORILERI" Association="Self.FK_GIDER_KAYITLARI_GIDER_KATEGORILERI">
+      <End Role="GiderKategori" EntitySet="GiderKategori" />
+      <End Role="Gider" EntitySet="Gider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IS_PERSONEL_ORTAK_ISLER" Association="Self.FK_IS_PERSONEL_ORTAK_ISLER">
+      <End Role="Is" EntitySet="Is" />
+      <End Role="IsPersonelOrtak" EntitySet="IsPersonelOrtak" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IS_PERSONEL_ORTAK_PERSONELLER" Association="Self.FK_IS_PERSONEL_ORTAK_PERSONELLER">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="IsPersonelOrtak" EntitySet="IsPersonelOrtak" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISLER_FIRMALAR" Association="Self.FK_ISLER_FIRMALAR">
+      <End Role="Firma" EntitySet="Firma" />
+      <End Role="Is" EntitySet="Is" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISLER_IS_DURUMLARI" Association="Self.FK_ISLER_IS_DURUMLARI">
+      <End Role="IsDurum" EntitySet="IsDurum" />
+      <End Role="Is" EntitySet="Is" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISLER_IS_TURLERI" Association="Self.FK_ISLER_IS_TURLERI">
+      <End Role="IsTur" EntitySet="IsTur" />
+      <End Role="Is" EntitySet="Is" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_LogTur" Association="Self.FK_Log_LogTur">
+      <End Role="LogTur" EntitySet="LogTur" />
+      <End Role="Log" EntitySet="Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_Personel" Association="Self.FK_Log_Personel">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="Log" EntitySet="Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MESAI_KAYITLARI_PERSONELLER" Association="Self.FK_MESAI_KAYITLARI_PERSONELLER">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="MesaiKayit" EntitySet="MesaiKayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONEL_MAAS_KAYITLARI_PERSONELLER" Association="Self.FK_PERSONEL_MAAS_KAYITLARI_PERSONELLER">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="PersonelMaas" EntitySet="PersonelMaas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personel_Rol" Association="Self.FK_Personel_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONELLER_PERSONEL_DEPARTMANLARI" Association="Self.FK_PERSONELLER_PERSONEL_DEPARTMANLARI">
+      <End Role="PersonelDepartman" EntitySet="PersonelDepartman" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONELLER_PERSONEL_TIPLERI" Association="Self.FK_PERSONELLER_PERSONEL_TIPLERI">
+      <End Role="PersonelTip" EntitySet="PersonelTip" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolHak_Hak" Association="Self.FK_RolHak_Hak">
+      <End Role="Hak" EntitySet="Hak" />
+      <End Role="RolHak" EntitySet="RolHak" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolHak_Rol" Association="Self.FK_RolHak_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="RolHak" EntitySet="RolHak" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIKAYET_KAYITLARI_ISLER" Association="Self.FK_SIKAYET_KAYITLARI_ISLER">
+      <End Role="Is" EntitySet="Is" />
+      <End Role="Sikayet" EntitySet="Sikayet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZIYARETLER_FIRMALAR" Association="Self.FK_ZIYARETLER_FIRMALAR">
+      <End Role="Firma" EntitySet="Firma" />
+      <End Role="Ziyaret" EntitySet="Ziyaret" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZIYARETLER_PERSONELLER" Association="Self.FK_ZIYARETLER_PERSONELLER">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="Ziyaret" EntitySet="Ziyaret" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZIYARETLER_ZIYARET_TURLERI" Association="Self.FK_ZIYARETLER_ZIYARET_TURLERI">
+      <End Role="ZiyaretTur" EntitySet="ZiyaretTur" />
+      <End Role="Ziyaret" EntitySet="Ziyaret" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
